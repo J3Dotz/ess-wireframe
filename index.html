@@ -55,7 +55,7 @@
   <section class="hero">
     <div class="hero__inner">
       <div class="hero__headline text-display reveal">Sustainability<br>where it is<br>most needed.</div>
-      <p class="hero__sub reveal">ESS delivers implementation-focused environmental and social consultancy across Africa and Central Asia — field teams embedded in the countries where it matters most.</p>
+      <p class="hero__sub reveal">We are ESS, a leading implementation-focused advisory services firm delivering sustainable development in Africa and emerging economies. We support you to cost-effectively integrate key Environmental, Social and Governance (ESG) and sustainability considerations into your business model, on the ground in the countries where you work.</p>
       <div class="hero__ctas reveal">
         <a href="services.html" class="btn btn--primary">Our Services</a>
         <a href="contact.html"  class="btn btn--ghost-white">Get in Touch</a>
@@ -108,6 +108,10 @@
         <div class="value-card">
           <h3 class="text-h4" style="color:var(--color-dark);margin-bottom:12px">Cost-Effective</h3>
           <p class="text-body" style="color:var(--color-mid)">In-country operations let us pass emerging market efficiencies on to clients — world-class HSEC and ESG management at realistic project costs.</p>
+        </div>
+        <div class="value-card" style="grid-column:1 / -1;max-width:calc(50% - 12px);margin-left:auto;margin-right:auto;width:100%">
+          <h3 class="text-h4" style="color:var(--color-dark);margin-bottom:12px">Creating Leaders</h3>
+          <p class="text-body" style="color:var(--color-mid)">Our mission is to develop the next generation of HSEC, ESG and sustainability leaders in Africa and emerging markets. We put recent graduates and early-career professionals in the driving seat, providing an innovative and intensive training programme that supports long-term success.</p>
         </div>
       </div>
     </div>
@@ -206,22 +210,53 @@
   <section class="testimonials">
     <div class="testimonials__inner">
       <p class="section-label testimonials__label">Client Testimonials</p>
-      <div class="testimonials__grid reveal">
-        <div>
-          <p class="testimonial__quote">For over four years ESS provided HSEC Outsourcing for the project. Several investors with very strict ESG requirements were involved, and we were pleased with the experienced and multi-lingual HSEC team members provided by ESS. We would not hesitate to recommend their services.</p>
-          <div class="testimonial__divider"></div>
-          <p class="testimonial__name">François Maze</p>
-          <p class="testimonial__role">CEO · Red Sea Power · Ghoubet Wind Farm, Djibouti</p>
+      <div class="reveal">
+        <div id="testimonial-track">
+          <div class="testimonial__slide">
+            <p class="testimonial__quote">"For over 4 years, ESS has provided HSEC Outsourcing for the project. We have several investors with very strict ESG requirements, and have been pleased with the experienced and multi-lingual HSEC team members provided by ESS. We would not hesitate to recommend their services."</p>
+            <div class="testimonial__divider"></div>
+            <p class="testimonial__name">François Maze</p>
+            <p class="testimonial__role">CEO · Red Sea Power · Ghoubet Wind Farm, Djibouti</p>
+          </div>
+          <div class="testimonial__slide" style="display:none">
+            <p class="testimonial__quote">"ESS has helped us since early exploration to navigate community engagement and the ESIA process, while also managing health and safety in a remote area. We also like their commitment to using African team members. We look forward to continuing to work together."</p>
+            <div class="testimonial__divider"></div>
+            <p class="testimonial__name">Jason Wilkinson</p>
+            <p class="testimonial__role">CEO · Banio Potash Project, Gabon</p>
+          </div>
+          <div class="testimonial__slide" style="display:none">
+            <p class="testimonial__quote">"ESS has provided the Climate &amp; Environment Team for the Programme since 2021. Since then, ESS has demonstrated flexibility, leadership and creativity in developing targeted support for beneficiaries. Their involvement is a crucial component of our success."</p>
+            <div class="testimonial__divider"></div>
+            <p class="testimonial__name">Dr Christoph Zipfel</p>
+            <p class="testimonial__role">Team Leader · Manufacturing Africa · UKAid / FCDO</p>
+          </div>
+          <div class="testimonial__slide" style="display:none">
+            <p class="testimonial__quote">"ESS has provided us with a number of valuable services spanning due diligence auditing, management systems as well as site-based HSEC support. They have helped us fill resource gaps by having a readily-available network of staff to support our project companies."</p>
+            <div class="testimonial__divider"></div>
+            <p class="testimonial__name">Claire Cummins</p>
+            <p class="testimonial__role">Head of ESG · Climate Fund Managers · Across Africa</p>
+          </div>
         </div>
-        <div>
-          <p class="testimonial__quote">ESS brought genuine in-country expertise to our ESG due diligence in Gabon. Their team's knowledge of both local conditions and international lender requirements made the difference between a completed assessment and a delayed one. A partner we continue to rely on.</p>
-          <div class="testimonial__divider"></div>
-          <p class="testimonial__name">David Chen</p>
-          <p class="testimonial__role">Director, Project Finance · Millennial Potash · Banio, Gabon</p>
+        <div style="display:flex;gap:12px;margin-top:32px">
+          <button id="testi-prev" style="background:none;border:1px solid currentColor;padding:8px 20px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:.02em">← Previous</button>
+          <button id="testi-next" style="background:none;border:1px solid currentColor;padding:8px 20px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:.02em">Next →</button>
         </div>
       </div>
     </div>
   </section>
+  <script>
+    (function () {
+      var slides = document.querySelectorAll('.testimonial__slide');
+      var current = 0;
+      function show(i) {
+        slides[current].style.display = 'none';
+        current = (i + slides.length) % slides.length;
+        slides[current].style.display = 'block';
+      }
+      document.getElementById('testi-prev').addEventListener('click', function () { show(current - 1); });
+      document.getElementById('testi-next').addEventListener('click', function () { show(current + 1); });
+    })();
+  </script>
 
   <!-- CTA BAND -->
   <section class="cta-band">
