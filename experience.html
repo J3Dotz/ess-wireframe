@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience — ESS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="page-experience">
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html"><img src="assets/img/logo-white.svg" alt="ESS" class="nav__logo"></a>
+      <div class="nav__links">
+        <a href="services.html"       class="nav__link" data-page="services">Services</a>
+        <a href="experience.html"     class="nav__link" data-page="experience">Experience</a>
+        <a href="team.html"           class="nav__link" data-page="team">Team</a>
+        <a href="sustainability.html" class="nav__link" data-page="sustainability">Sustainability</a>
+        <a href="careers.html"        class="nav__link" data-page="careers">Careers</a>
+        <a href="posts.html"          class="nav__link" data-page="posts">Posts</a>
+      </div>
+      <a href="contact.html" class="nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__overlay">
+    <button class="nav__overlay-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <a href="index.html"          class="nav__overlay-link">Home</a>
+    <a href="services.html"       class="nav__overlay-link">Services</a>
+    <a href="experience.html"     class="nav__overlay-link">Experience</a>
+    <a href="team.html"           class="nav__overlay-link">Team</a>
+    <a href="sustainability.html" class="nav__overlay-link">Sustainability</a>
+    <a href="careers.html"        class="nav__overlay-link">Careers</a>
+    <a href="posts.html"          class="nav__overlay-link">Posts</a>
+    <a href="contact.html"        class="nav__overlay-link">Get in Touch</a>
+  </div>
+
+  <div class="nav-spacer"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <p class="section-label page-hero__label">Experience</p>
+      <h1 class="page-hero__title">Our Experience</h1>
+      <p class="page-hero__sub">From wind energy in Djibouti to potash mining in Gabon, agricultural programmes across sub-Saharan Africa and infrastructure projects in Central Asia — ESS has delivered HSEC and ESG consultancy across twelve countries and four sectors.</p>
+    </div>
+  </section>
+
+  <!-- FILTER ROW -->
+  <div class="filter-row">
+    <div class="filter-row__inner">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn is-active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="energy">Energy</button>
+      <button class="filter-btn" data-filter="mining">Mining</button>
+      <button class="filter-btn" data-filter="agriculture">Agriculture</button>
+      <button class="filter-btn" data-filter="transport">Transport</button>
+      <button class="filter-btn" data-filter="finance">Finance</button>
+    </div>
+  </div>
+
+  <!-- PROJECT GRID -->
+  <section style="background:var(--color-bg);padding:0 80px 80px">
+    <div style="max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px" class="reveal">
+
+      <div class="project-card-wrap" data-sector="energy">
+        <div class="project-card">
+          <div class="project-card__img" style="background:#B8CDB8"><span>Photo 16:9</span></div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--dot">Djibouti</span>
+              <span class="tag">Energy</span>
+            </div>
+            <p class="project-card__title">Ghoubet 60MW Wind Farm</p>
+            <p class="project-card__client">Red Sea Power</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-wrap" data-sector="mining">
+        <div class="project-card">
+          <div class="project-card__img" style="background:#A8C0A8"><span>Photo 16:9</span></div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--dot">Gabon</span>
+              <span class="tag">Mining</span>
+            </div>
+            <p class="project-card__title">Banio Potash Project</p>
+            <p class="project-card__client">Millennial Potash</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-wrap" data-sector="agriculture">
+        <div class="project-card">
+          <div class="project-card__img" style="background:#C8DCC8"><span>Photo 16:9</span></div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--dot">7 Countries</span>
+              <span class="tag">Agriculture</span>
+            </div>
+            <p class="project-card__title">Manufacturing Africa</p>
+            <p class="project-card__client">UKAid / FCDO</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-wrap" data-sector="finance">
+        <div class="project-card">
+          <div class="project-card__img" style="background:#B0C8B0"><span>Photo 16:9</span></div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--dot">Côte d'Ivoire</span>
+              <span class="tag">Finance</span>
+            </div>
+            <p class="project-card__title">Blended Finance ESG Advisory</p>
+            <p class="project-card__client">IFC</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-wrap" data-sector="agriculture">
+        <div class="project-card">
+          <div class="project-card__img" style="background:#9AB89A"><span>Photo 16:9</span></div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--dot">Ghana</span>
+              <span class="tag">Agriculture</span>
+            </div>
+            <p class="project-card__title">Ahafo Agri-Business Programme</p>
+            <p class="project-card__client">AFC</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-wrap" data-sector="transport">
+        <div class="project-card">
+          <div class="project-card__img" style="background:#8AB08A"><span>Photo 16:9</span></div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--dot">Kazakhstan</span>
+              <span class="tag">Transport</span>
+            </div>
+            <p class="project-card__title">Trans-Caspian Rail ESIA</p>
+            <p class="project-card__client">EBRD</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <a href="index.html"><img src="assets/img/logo-white.svg" alt="ESS" class="footer__logo"></a>
+        <nav class="footer__links">
+          <a href="services.html"       class="footer__link">Services</a>
+          <a href="experience.html"     class="footer__link">Experience</a>
+          <a href="team.html"           class="footer__link">Team</a>
+          <a href="sustainability.html" class="footer__link">Sustainability</a>
+          <a href="careers.html"        class="footer__link">Careers</a>
+          <a href="contact.html"        class="footer__link">Contact</a>
+        </nav>
+      </div>
+      <p class="footer__tagline">Sustainability where it is most needed.</p>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2026 Environmental and Social Sustainability Ltd. · Dakar, Senegal</span>
+        <div class="footer__social">
+          <span class="footer__lang">EN <span class="footer__lang-divider">|</span> FR</span>
+          <a href="https://www.linkedin.com/company/ess-africa" target="_blank" rel="noopener" aria-label="ESS on LinkedIn">
+            <svg class="icon-linkedin" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
