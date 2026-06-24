@@ -4,7 +4,11 @@
 (function() {
   var els = document.querySelectorAll('.reveal');
   if (!els.length || typeof IntersectionObserver === 'undefined') {
-    // fallback: show all
+    els.forEach(function(el) { el.classList.add('is-visible'); });
+    return;
+  }
+  // Snap scroll on homepage handles transitions — show all reveals immediately
+  if (document.getElementById('snap-home')) {
     els.forEach(function(el) { el.classList.add('is-visible'); });
     return;
   }
@@ -84,6 +88,72 @@
     link.addEventListener('click', closeOverlay);
   });
 })();
+
+// ─── SNAP SCROLL + DOT NAV (homepage only) ────────────────────────
+if (document.getElementById('snap-home')) {
+  var _snapSetActive; // shared between dot IIFE and keyboard handler
+
+  (function() {
+    var container  = document.getElementById('snap-home');
+    var sections   = Array.prototype.slice.call(document.querySelectorAll('.snap-section'));
+    var dotNav     = document.getElementById('dot-nav');
+    var labels     = ['Hero', 'Values', 'Services', 'Definitions', 'Clients', 'Logos', 'Contact', 'Footer'];
+    var darkSlides = ['slide-hero', 'slide-footer'];
+
+    sections.forEach(function(section, i) {
+      var btn = document.createElement('button');
+      btn.className = 'dot';
+      btn.setAttribute('aria-label', labels[i] || ('Section ' + (i + 1)));
+      btn.addEventListener('click', function() {
+        section.scrollIntoView({ behavior: 'instant', block: 'start' });
+        setActive(i);
+      });
+      dotNav.appendChild(btn);
+    });
+
+    var dots = Array.prototype.slice.call(dotNav.querySelectorAll('.dot'));
+
+    function setActive(index) {
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+      var slideId = sections[index] ? sections[index].id : '';
+      dotNav.classList.toggle('dot-nav--light', darkSlides.indexOf(slideId) !== -1);
+    }
+
+    _snapSetActive = setActive;
+
+    // IO as fallback for wheel/touch scroll
+    if (typeof IntersectionObserver !== 'undefined') {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var idx = sections.indexOf(entry.target);
+            if (idx !== -1) setActive(idx);
+          }
+        });
+      }, { root: container, threshold: 0.5 });
+      sections.forEach(function(s) { io.observe(s); });
+    }
+
+    setActive(0);
+  })();
+
+  document.addEventListener('keydown', function(e) {
+    var container = document.getElementById('snap-home');
+    if (!container) return;
+    var h        = container.clientHeight;
+    var current  = Math.round(container.scrollTop / h);
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.snap-section'));
+    var total    = sections.length;
+    if (e.key === 'ArrowDown' && current < total - 1) {
+      sections[current + 1].scrollIntoView({ behavior: 'instant', block: 'start' });
+      if (_snapSetActive) _snapSetActive(current + 1);
+    }
+    if (e.key === 'ArrowUp' && current > 0) {
+      sections[current - 1].scrollIntoView({ behavior: 'instant', block: 'start' });
+      if (_snapSetActive) _snapSetActive(current - 1);
+    }
+  });
+}
 
 // ─── EXPERIENCE FILTER ────────────────────────────────────────────
 (function() {

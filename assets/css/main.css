@@ -1558,3 +1558,149 @@ section { width: 100%; }
   .card-grid-4 { grid-template-columns: 1fr; }
   .service-tile-grid { grid-template-columns: 1fr; }
 }
+
+/* Snap scroll — homepage */
+body.page-home { overflow: hidden; }
+
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Neutralize existing section vertical padding inside snap context */
+.snap-container .hero,
+.snap-container .core-values,
+.snap-container .key-services,
+.snap-container .understanding-section,
+.snap-container .client-reviews,
+.snap-container .logo-carousel-section,
+.snap-container .contact-summary {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Hero: full bleed — content starts below nav, image fills remaining space */
+#slide-hero {
+  padding-top: 72px;
+  justify-content: flex-start;
+}
+#slide-hero .hero__inner { flex-shrink: 0; padding-top: 48px; }
+#slide-hero .hero__img   { flex: 1; height: auto; min-height: 100px; margin-top: 40px; }
+
+/* Non-hero sections: push content below fixed nav + per-slide breathing room */
+#slide-values      { padding-top: 72px; padding-bottom: 40px; }
+#slide-services    { padding-top: 72px; padding-bottom: 40px; }
+#slide-definitions { padding-top: 72px; padding-bottom: 40px; }
+#slide-clients     { padding-top: 72px; padding-bottom: 32px; }
+#slide-logos       { padding-top: 60px; padding-bottom: 60px; }
+#slide-contact     { padding-top: 72px; padding-bottom: 40px; }
+#slide-footer      { padding-top: 72px; padding-bottom: 40px; }
+
+/* Section heading margin reductions */
+#slide-values .core-values__header,
+#slide-services .key-services__header,
+#slide-definitions .understanding-section__header,
+#slide-contact .contact-summary__header { margin-bottom: 24px; }
+#slide-clients .client-reviews__header  { margin-bottom: 20px; }
+
+/* Values */
+#slide-values .cv-card__img  { aspect-ratio: 3/2; }
+#slide-values .cv-card__text { font-size: 14px; }
+
+/* Clients — dense slide */
+#slide-clients .review-card__text        { font-size: 14px; }
+#slide-clients .review-card__attribution { font-size: 12px; }
+#slide-clients .review-card__project     { min-height: 0; }
+
+/* Logos — vertically centred */
+#slide-logos .logo-carousel-section__header { margin-bottom: 32px; }
+
+/* Contact — shorter image area */
+#slide-contact .contact-info-card__img-wrap { aspect-ratio: unset; height: 140px; }
+
+/* Footer snap section */
+.snap-section--footer {
+  background: var(--color-alt-2);
+  justify-content: center;
+  padding-top: 0;
+}
+.snap-section--footer .footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100%;
+}
+.snap-section--footer .footer__top     { margin-bottom: 32px; }
+.snap-section--footer .footer__tagline { margin-bottom: 32px; }
+
+/* Dot nav */
+.dot-nav {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 200;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-light);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 150ms ease;
+}
+
+.dot.active { background: var(--color-light); }
+
+.dot:hover {
+  background: var(--color-mid);
+  border-color: var(--color-mid);
+}
+
+.dot-nav--light .dot        { border-color: rgba(255,255,255,0.5); }
+.dot-nav--light .dot.active { background: white; border-color: white; }
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: fadeHint 2s ease 2s forwards;
+  opacity: 1;
+}
+
+@keyframes fadeHint {
+  to { opacity: 0; pointer-events: none; }
+}
+
+@media (max-width: 768px) {
+  .dot-nav { display: none; }
+}
