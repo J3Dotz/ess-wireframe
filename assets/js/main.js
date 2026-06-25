@@ -179,6 +179,61 @@ if (document.getElementById('snap-home')) {
   tDots.forEach(function(dot, i) {
     dot.addEventListener('click', function() { goToSlide(i); });
   });
+
+  // ─── AUTO-ROTATION ────────────────────────────────────────────────
+  var autoRotateDelay = 5000;
+  var autoRotateTimer;
+
+  function startAutoRotate() {
+    clearInterval(autoRotateTimer);
+    autoRotateTimer = setInterval(function() {
+      goToSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1);
+    }, autoRotateDelay);
+  }
+
+  function stopAutoRotate() {
+    clearInterval(autoRotateTimer);
+  }
+
+  startAutoRotate();
+
+  [prevBtn, nextBtn].concat(Array.prototype.slice.call(tDots)).forEach(function(el) {
+    el.addEventListener('click', function() {
+      stopAutoRotate();
+      clearTimeout(window.resumeTimer);
+      window.resumeTimer = setTimeout(startAutoRotate, 8000);
+    });
+  });
+
+  var clientsSlide = document.getElementById('slide-clients');
+  if (clientsSlide && typeof IntersectionObserver !== 'undefined') {
+    var carouselObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { startAutoRotate(); } else { stopAutoRotate(); }
+      });
+    }, { threshold: 0.5 });
+    carouselObserver.observe(clientsSlide);
+  }
+
+  // ─── SWIPE (TOUCH) ────────────────────────────────────────────────
+  var touchStartX = 0;
+  var swipeThreshold = 50;
+
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoRotate();
+  }, { passive: true });
+
+  track.addEventListener('touchend', function(e) {
+    var delta = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(delta) > swipeThreshold) {
+      goToSlide(delta > 0
+        ? (currentSlide === slides.length - 1 ? 0 : currentSlide + 1)
+        : (currentSlide === 0 ? slides.length - 1 : currentSlide - 1));
+    }
+    clearTimeout(window.resumeTimer);
+    window.resumeTimer = setTimeout(startAutoRotate, 8000);
+  }, { passive: true });
 }
 
 // ─── EXPERIENCE FILTER ────────────────────────────────────────────
