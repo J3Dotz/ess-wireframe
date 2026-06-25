@@ -1704,3 +1704,147 @@ body.page-home { overflow: hidden; }
 @media (max-width: 768px) {
   .dot-nav { display: none; }
 }
+
+/* ─── TESTIMONIAL CAROUSEL ────────────────────────────────── */
+.testimonial-carousel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.testimonial-track {
+  display: flex;
+  height: 100%;
+  transition: transform 300ms ease;
+}
+
+.testimonial-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.testimonial-left {
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+}
+
+.t-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--color-light);
+}
+
+.t-project-label {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  color: white;
+}
+
+.t-project-name {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.t-location {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.testimonial-right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 64px;
+  background: var(--color-bg);
+}
+
+.t-client-logo-placeholder {
+  width: 120px;
+  height: 40px;
+  background: var(--color-light);
+  margin-bottom: 32px;
+}
+
+.t-quote {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-dark);
+  font-style: italic;
+  margin: 0 0 24px 0;
+  border: none;
+  padding: 0;
+}
+
+.t-attribution {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-mid);
+  font-style: normal;
+}
+
+.testimonial-controls {
+  position: absolute;
+  bottom: 32px;
+  right: 64px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.t-prev, .t-next {
+  background: none;
+  border: 1.5px solid var(--color-mid);
+  color: var(--color-dark);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.t-prev:hover, .t-next:hover {
+  border-color: var(--color-dark);
+}
+
+.t-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.t-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-mid);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 150ms ease;
+}
+
+.t-dot.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Clients slide — height chain so carousel fills the section */
+#slide-clients { justify-content: flex-start; }
+#slide-clients .client-reviews__inner { flex: 1; display: flex; flex-direction: column; }

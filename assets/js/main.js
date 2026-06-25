@@ -153,6 +153,32 @@ if (document.getElementById('snap-home')) {
       if (_snapSetActive) _snapSetActive(current - 1);
     }
   });
+
+  // ─── TESTIMONIAL CAROUSEL ─────────────────────────────────────────
+  var track = document.querySelector('.testimonial-track');
+  var slides = document.querySelectorAll('.testimonial-slide');
+  var tDots = document.querySelectorAll('.t-dot');
+  var prevBtn = document.querySelector('.t-prev');
+  var nextBtn = document.querySelector('.t-next');
+  var currentSlide = 0;
+
+  function goToSlide(index) {
+    currentSlide = index;
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    tDots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+  }
+
+  prevBtn.addEventListener('click', function() {
+    goToSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1);
+  });
+
+  nextBtn.addEventListener('click', function() {
+    goToSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1);
+  });
+
+  tDots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() { goToSlide(i); });
+  });
 }
 
 // ─── EXPERIENCE FILTER ────────────────────────────────────────────
